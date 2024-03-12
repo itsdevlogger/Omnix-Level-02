@@ -1,0 +1,31 @@
+- Check existing demos (To make sure they work with lates commit)
+- Add create prefab and create menu toggle in menu maker
+- Fade transition is not working properly, loadEnd value is being modified
+- Dynaminc menu 
+	While Loading:
+	```C#
+	if (allowTurnOff)
+	{
+		// Item that was selected when the menu was last active,
+		// is present in this load, then select that 
+		if (Selected.ItemData != null && GetItems().Contains(Selected.ItemData))	
+		{
+			Select(Selected.ItemData)
+		}
+		// First item in the list
+		else if (firstItem != null)
+		{
+			Select(firstItem) 
+		}
+		else	
+		{
+			OnLoadingFailed();
+		} 
+	}
+	else
+	{
+		Deselct();
+	}
+	```
+	While Unloading: Deselct()
+	This way, when the menu is 'loaded -> unloaded -> loaded', it does not create glitches

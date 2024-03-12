@@ -1,0 +1,17 @@
+{
+    "name": "Omnix.MenuSysteml.Demo",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5a42e842438d2b249a505812e8c0d8a0",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,2 @@
+Add confirm with acknowledgement (Usefull for non-reversible transaction, like buying something)
+Check nulls in Notification module

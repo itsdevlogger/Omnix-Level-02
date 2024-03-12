@@ -1,0 +1,32 @@
+﻿using System.Collections.Generic;
+using MenuManagement.Behaviours;
+
+// @cst_stop
+// This is just so the script can compile
+public class CST_DATA_CLASS { }
+// @cst_start
+
+#if cst_has_name_space
+namespace CST_NAME_SPACE
+{
+// @cst_indent += 4
+#endif
+#if cst_no_common_object
+public class CST_MENU_CLASS : BaseDynamicMenu<CST_DATA_CLASS, CST_PREFAB_CLASS>
+{
+#endif
+#if cst_has_common_object
+public class CST_MENU_CLASS : BaseDynamicMenu<CST_DATA_CLASS, CST_PREFAB_CLASS, CST_MENU_CLASS>
+{
+    protected override CST_MENU_CLASS CommonObject => this;
+#endif
+    
+    protected override IEnumerable<CST_DATA_CLASS> GetItems()
+    {
+        
+    }
+}
+#if cst_has_name_space
+// @cst_indent -= 4
+}
+#endif

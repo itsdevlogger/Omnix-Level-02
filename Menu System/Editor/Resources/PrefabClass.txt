@@ -1,0 +1,43 @@
+﻿using TMPro;
+using UnityEngine.UI;
+using MenuManagement.Behaviours;
+using UnityEngine;
+
+#if cst_has_name_space
+namespace CST_NAME_SPACE
+{
+// @cst_indent += 4
+#endif
+
+#if cst_has_common_object
+public class CST_PREFAB_CLASS : BaseItemPrefab<CST_DATA_CLASS, CST_MENU_CLASS>
+#endif
+#if cst_no_common_object
+public class CST_PREFAB_CLASS : BaseItemPrefab<CST_DATA_CLASS>
+#endif
+{
+/*CST_CODE_FIELDS*/
+
+    protected override void OnSetup(CST_DATA_CLASS data)
+    {
+/*CST_CODE_SETUP*/
+    }
+    
+#if cst_prefab_set_binding
+    public override void SetBindings()
+    {
+
+    }
+#endif
+
+#if cst_prefab_on_select
+    public override void OnSelect()
+    {
+
+    }
+#endif 
+}
+#if cst_has_name_space
+// @cst_indent -= 4
+}
+#endif

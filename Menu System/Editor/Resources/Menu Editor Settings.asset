@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa75c3c7e843984aac1a82325a0342b, type: 3}
+  m_Name: Menu Editor Settings
+  m_EditorClassIdentifier: 
+  _compileVariables:
+  - name: prefab_set_binding
+    displayName: Override SetBindings in ItemPrefab.
+    tooltip: Override SetBindings callback in ItemPrefab class.
+    defaultValue: 0
+  - name: prefab_on_select
+    displayName: Override OnSelect in ItemPrefab.
+    tooltip: Override OnSelect callback in ItemPrefab class.
+    defaultValue: 0

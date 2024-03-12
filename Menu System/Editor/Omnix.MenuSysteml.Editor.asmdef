@@ -1,0 +1,22 @@
+{
+    "name": "Omnix.MenuSysteml.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5a42e842438d2b249a505812e8c0d8a0",
+        "GUID:066fe0c83de2e8d42a7b5292f49c78a0",
+        "GUID:4860b2c10d41b4f46a4c10d02018cee4",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:8e072a095f851384ca6cb2db479f061a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

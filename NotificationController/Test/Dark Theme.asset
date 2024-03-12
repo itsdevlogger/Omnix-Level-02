@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f21b55d502765a4a8f4f8b0457e5803, type: 3}
+  m_Name: Dark Theme
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1328573605177869353, guid: 34f66021e789c174a8b161493c80dbb8, type: 3}
+  messageScreen: {fileID: 1042770012685292061, guid: e5d1467828704eb488d3c057037f20f6, type: 3}
+  successScreen: {fileID: 8943014383556353389, guid: e959cbdef46146348be4b5d1188f701c, type: 3}
+  errorScreen: {fileID: 486965034383826515, guid: b7cc4dfb26f6b9840a0874467075facc, type: 3}
+  confirmScreen: {fileID: 2994545750822473275, guid: fbfeab71de9927049bfbaf6be6ac40ac, type: 3}
