@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2994545750822473268}
-  - component: {fileID: 2994545750822473275}
+  - component: {fileID: 765965671716336754}
   m_Layer: 0
   m_Name: Confirm Screen
   m_TagString: Untagged
@@ -642,10 +642,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.709503, y: -3.1358032}
+  m_AnchoredPosition: {x: 4.7094727, y: -3.1358032}
   m_SizeDelta: {x: -460.9133, y: -211.6532}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2994545750822473275
+--- !u!114 &765965671716336754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2994545750822473269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 797f377636fda5f49bc5a04c90dcda2b, type: 3}
+  m_Script: {fileID: 11500000, guid: a69194431930793479fd9199b6769eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 9059802526670488960}

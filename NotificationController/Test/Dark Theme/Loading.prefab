@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1328573605177869352}
   - component: {fileID: 1328573605177869351}
   - component: {fileID: 1328573605177869350}
-  - component: {fileID: 1328573605177869353}
+  - component: {fileID: 8554131765116679521}
   m_Layer: 0
   m_Name: Loading
   m_TagString: Untagged
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1328573605177869353
+--- !u!114 &8554131765116679521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,10 +161,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328573605177869355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4f34926e811004b80290e156b32269, type: 3}
+  m_Script: {fileID: 11500000, guid: e142d2a9fcd5ab440841c94287b30601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 0}
   progressBar: {fileID: 0}
   objectToRotate: {fileID: 1328573604678470966}
-  rotateSpeed: {x: 0, y: 0, z: -250}
+  rotateSpeed: {x: 0, y: 0, z: -20}
