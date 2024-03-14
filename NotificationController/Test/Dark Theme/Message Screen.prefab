@@ -341,6 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1042770012685292060}
   - component: {fileID: 1042770012685292061}
+  - component: {fileID: -7955387826495014231}
   m_Layer: 0
   m_Name: Message Screen
   m_TagString: Untagged
@@ -389,6 +390,19 @@ MonoBehaviour:
     button: {fileID: 1042770011745273670}
     textMesh: {fileID: 1042770012273586922}
     defaultText: 
+--- !u!114 &-7955387826495014231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042770012685292063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eae476737247609640555484af95a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockInput: 1
 --- !u!1 &1042770012888490874
 GameObject:
   m_ObjectHideFlags: 0

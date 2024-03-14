@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522739497080889173}
   - component: {fileID: 486965034383826515}
+  - component: {fileID: -6884960802829481199}
   m_Layer: 0
   m_Name: Error Screen
   m_TagString: Untagged
@@ -58,6 +59,19 @@ MonoBehaviour:
     button: {fileID: 2312438300015224626}
     textMesh: {fileID: 1732531411402491567}
     defaultText: 
+--- !u!114 &-6884960802829481199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482517102248589580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eae476737247609640555484af95a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockInput: 1
 --- !u!1 &2948064124361714550
 GameObject:
   m_ObjectHideFlags: 0

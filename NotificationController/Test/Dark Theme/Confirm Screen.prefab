@@ -615,6 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2994545750822473268}
   - component: {fileID: 765965671716336754}
+  - component: {fileID: 4011979434850192200}
   m_Layer: 0
   m_Name: Confirm Screen
   m_TagString: Untagged
@@ -671,6 +672,19 @@ MonoBehaviour:
     button: {fileID: 2994545751221208573}
     textMesh: {fileID: 2994545751048867980}
     defaultText: 
+--- !u!114 &4011979434850192200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994545750822473269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eae476737247609640555484af95a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockInput: 1
 --- !u!1 &2994545751048867982
 GameObject:
   m_ObjectHideFlags: 0

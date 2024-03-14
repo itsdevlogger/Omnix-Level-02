@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2568223620851205050}
   - component: {fileID: 8943014383556353389}
+  - component: {fileID: 7055339524870779717}
   m_Layer: 0
   m_Name: Success Screen
   m_TagString: Untagged
@@ -58,6 +59,19 @@ MonoBehaviour:
     button: {fileID: 5255834126748186278}
     textMesh: {fileID: 8233024777834709395}
     defaultText: 
+--- !u!114 &7055339524870779717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849193214360312228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eae476737247609640555484af95a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blockInput: 1
 --- !u!1 &2104339667842031352
 GameObject:
   m_ObjectHideFlags: 0
