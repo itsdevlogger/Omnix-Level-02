@@ -1,106 +1,50 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Omnix.Notification
 {
-    /// <summary>
-    /// A class for confirm screen
-    /// </summary>
-    public class ConfirmScreen : BaseNotificationScreen
+    public class ConfirmScreen : BaseScreen
     {
-        [SerializeField, CanBeNull] private TextMeshProUGUI detailsText;
-        [SerializeField] public ButtonAndText yesButton;
-        [SerializeField] public ButtonAndText noButton;
-        [SerializeField] public ButtonAndText cancelButton;
+        [SerializeField, Tooltip("[NOT NULL] Text that represents title of this window")]
+        private TextMeshProUGUI _title;
+
+        [SerializeField, Tooltip("[NOT NULL] Text that represents description of this window")]
+        private TextMeshProUGUI _description;
+        
+        [SerializeField, Tooltip("[Can Be Null] Close window button (Function is same as Cancel Button)"), CanBeNull]
+        private Button _closeButton;
+        
+        [SerializeField, Tooltip("[Can Be Null] Yes Option Button"), CanBeNull]
+        private ButtonAndText _yesButton;
+
+        [SerializeField, Tooltip("[Can Be Null] No Option Button"), CanBeNull]
+        private ButtonAndText _noButton;
+
+        [SerializeField, Tooltip("[Can Be Null] Cancel Option Button"), CanBeNull]
+        private ButtonAndText _cancelButton;
+
+       
 
         private void Awake()
         {
-            yesButton.defaultText = yesButton.textMesh.text;
-            noButton.defaultText = noButton.textMesh.text;
-            cancelButton.defaultText = cancelButton.textMesh.text;
+            _yesButton?.AddListener(Close);
+            _noButton?.AddListener(Close);
+            _cancelButton?.AddListener(Close);
+            if (_closeButton) _closeButton.onClick.AddListener(Close);
         }
 
-        internal void Init(string title, string details, BaseButtonConfigs yesConfig, BaseButtonConfigs noConfig, BaseButtonConfigs cancelButtonConfig)
+        public void Init(string title, string description, IButtonSettings yesSetting, IButtonSettings noSetting, IButtonSettings cancelSetting)
         {
-            destroyOnHide = false;
+            Activate(-1);
 
-            if (titleText != null) titleText.text = title;
-            if (detailsText != null) detailsText.text = details;
-
-            yesConfig.Config(yesButton);
-            noConfig.Config(noButton);
-            cancelButtonConfig.Config(cancelButton);
-            Activate(this);
-        }
-        
-        
-        public ConfirmScreen Title(string value)
-        {
-            if (titleText != null) titleText.text = value;
-            return this;
-        }
-
-        public ConfirmScreen Details(string value)
-        {
-            if (detailsText != null) detailsText.text = value;
-            return this;
-        }
-
-        public ConfirmScreen YesActive(bool value)
-        {
-            yesButton.button.gameObject.SetActive(value);
-            return this;
-        }
-        
-        public ConfirmScreen OnYes(UnityAction callback)
-        {
-            yesButton.button.onClick.AddListener(callback);
-            return this;
-        }
-        
-        public ConfirmScreen YesText(string value)
-        {
-            yesButton.textMesh.text = value;
-            return this;
-        }
-        
-        public ConfirmScreen NoActive(bool value)
-        {
-            noButton.button.gameObject.SetActive(value);
-            return this;
-        }
-        
-        public ConfirmScreen OnNo(UnityAction callback)
-        {
-            noButton.button.onClick.AddListener(callback);
-            return this;
-        }
-        
-        public ConfirmScreen NoText(string value)
-        {
-            noButton.textMesh.text = value;
-            return this;
-        }
-        
-        public ConfirmScreen CancelActive(bool value)
-        {
-            cancelButton.button.gameObject.SetActive(value);
-            return this;
-        }
-        
-        public ConfirmScreen OnCancel(UnityAction callback)
-        {
-            cancelButton.button.onClick.AddListener(callback);
-            return this;
-        }
-        
-        public ConfirmScreen CancelText(string value)
-        {
-            cancelButton.textMesh.text = value;
-            return this;
+            _title.SetText(title);
+            _description.SetText(description);
+            _yesButton?.Set(yesSetting);
+            _noButton?.Set(noSetting);
+            _cancelButton?.Set(cancelSetting);
+            if (_closeButton) _closeButton.onClick.AddListener(cancelSetting.Callback);
         }
     }
 }

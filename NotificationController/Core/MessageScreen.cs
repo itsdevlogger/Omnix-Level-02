@@ -1,61 +1,31 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Omnix.Notification
 {
-    /// <summary> A class for message screen </summary>
-    public class MessageScreen : BaseNotificationScreen
+    public class MessageScreen : BaseScreen
     {
-        [SerializeField, CanBeNull] private TextMeshProUGUI detailsText;
-        [SerializeField] public ButtonAndText button;
-
+        [SerializeField, Tooltip("[NOT NULL] Text that represents title of this window")] private TextMeshProUGUI _title;
+        [SerializeField, Tooltip("[NOT NULL] Text that represents description of this window")] private TextMeshProUGUI _description;
+        [SerializeField, Tooltip("[Can Be Null] Close window button"), CanBeNull] private Button _closeButton;
+        [SerializeField, Tooltip("[Can Be Null] Yes Option Button"), CanBeNull] private ButtonAndText _okButton;
+        
         private void Awake()
         {
-            button.defaultText = button.textMesh.text;
+            _okButton?.AddListener(Close);
+            if (_closeButton) _closeButton.onClick.AddListener(Close);
         }
 
-        internal void Init(string title, string details, BaseButtonConfigs buttonConfig, float autoHideDuration)
+        public void Init(string title, string description, IButtonSettings okSettings, UnityAction onCloseClicked, float autoHideDuration)
         {
-            destroyOnHide = false;
-
-            if (titleText != null) titleText.text = title;
-            if (detailsText != null) detailsText.text = details;
-            buttonConfig.Config(button);
-            Activate(this);
-            if (autoHideDuration > 0) Close(autoHideDuration);
-        }
-        
-        public MessageScreen Title(string value)
-        {
-            if (titleText != null) titleText.text = value;
-            return this;
-        }
-
-        public MessageScreen Details(string value)
-        {
-            if (detailsText != null) detailsText.text = value;
-            return this;
-        }
-
-        public MessageScreen ButtonActive(bool value)
-        {
-            button.button.gameObject.SetActive(value);
-            return this;
-        }
-        
-        public MessageScreen OnButton(UnityAction callback)
-        {
-            button.button.onClick.AddListener(callback);
-            return this;
-        }
-        
-        public MessageScreen ButtonText(string value)
-        {
-            button.textMesh.text = value;
-            return this;
+            Activate(autoHideDuration);
+            if (_title) _title.SetText(title);
+            if (_description) _description.SetText(description);
+            if (onCloseClicked != null && _closeButton != null) _closeButton.onClick.AddListener(onCloseClicked);
+            _okButton?.Set(okSettings);
         }
     }
 }

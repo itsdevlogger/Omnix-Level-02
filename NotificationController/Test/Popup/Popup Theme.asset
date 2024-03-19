@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c1b2dbcfa44f928db1f733f077a3da, type: 3}
+  m_Name: Popup Theme
+  m_EditorClassIdentifier: 
+  messageScreen: {fileID: 4256060231708726927, guid: 5622371f37ca81b42913703440fe184d,
+    type: 3}
+  successScreen: {fileID: 3536556277630130074, guid: 4a70bca45ee71cd42a6dbf5c1b290823,
+    type: 3}
+  errorScreen: {fileID: 2362546278964439021, guid: 1e1b0fad2ad9a0243b05530b01df3692,
+    type: 3}
+  confirmScreen: {fileID: 2557357928219103595, guid: 705637ad1ae233440a37536d18848d67,
+    type: 3}
+  loadingScreen: {fileID: 4906022393032540398, guid: 4c90a2f41f931cd45abfecbaac7bda2e,
+    type: 3}
