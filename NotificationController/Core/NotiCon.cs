@@ -42,9 +42,8 @@ namespace Omnix.Notification
         #endregion
 
         #region Functionalities
-        protected override void Awake()
+        protected override void Init()
         {
-            base.Awake();
             _messageScreen = CreateInstance(_defaultTheme.messageScreen, false);
             _successScreen = CreateInstance(_defaultTheme.successScreen, false);
             _errorScreen = CreateInstance(_defaultTheme.errorScreen, false);

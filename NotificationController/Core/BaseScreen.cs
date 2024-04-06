@@ -15,7 +15,8 @@ namespace Omnix.Notification
         protected void Activate(float autoHideDuration)
         {
             CurrentScreen = this;
-            CurrentScreenId = Random.Range(-100000, 100000);
+            CurrentScreenId = Random.Range(int.MinValue, int.MaxValue);
+            Debug.Log($"CurrentScreenId: {CurrentScreenId}");
             ScreenId = CurrentScreenId;
             gameObject.SetActive(true);
             if (autoHideDuration > Time.deltaTime) NotiCon.Instance.AutohideActiveScreen(autoHideDuration);
