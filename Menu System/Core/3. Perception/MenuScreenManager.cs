@@ -6,6 +6,7 @@ using MenuManagement.Base;
 using Omnix.DesignPatterns;
 using UnityEngine;
 using UnityEngine.UI;
+using static MenuManagement.Perception.MenuScreenManager;
 
 namespace MenuManagement.Perception
 {
@@ -25,10 +26,9 @@ namespace MenuManagement.Perception
         [SerializeField] private int defaultMenuIndex;
         public BaseTransitionBlendable defaultTransition;
 
+        public IEnumerable<Wrapper> ManagedMenus => managedMenus;
         public Wrapper ActiveMenuWrapper { get; private set; }
         public bool IsActive { get; private set; }
-        private bool _ignoreToggleCallbacks = false;
-
         private TaskQueue queue;
 
         protected override IEnumerator BeforeLoad() { yield break; }
@@ -39,49 +39,44 @@ namespace MenuManagement.Perception
             queue = new TaskQueue();
             onLoad.AddListener(ActivateScreen);
             onUnload.AddListener(DeactivateScreen);
-            
 
-            // Bind Toggles
+            int activeIndex = Mathf.Clamp(defaultMenuIndex, 0, managedMenus.Count - 1);
+            int wrapperIndex = 0;
             foreach (Wrapper wrapper in managedMenus)
             {
+                wrapper.menu.IsManaged = true;
                 wrapper.toggle.onValueChanged.AddListener(value =>
                 {
-                    if (_ignoreToggleCallbacks) return;
                     queue.BeginTask(Tasks.OnToggleValueChanged, this, wrapper, value);
                 });
+
+                if (wrapperIndex != activeIndex) MenuLoader.UnloadWithoutTransition(wrapper.menu);
+                wrapperIndex++;
             }
         }
 
         private void UpdateToggles()
         {
-            _ignoreToggleCallbacks = true;
             foreach (Wrapper wrapper in managedMenus)
             {
                 bool value = (wrapper.menu == ActiveMenuWrapper.menu);
                 if (wrapper.toggle.isOn != value)
                 {
-                    wrapper.toggle.isOn = value;
+                    wrapper.toggle.SetIsOnWithoutNotify(value);
                 }
             }
-            _ignoreToggleCallbacks = false;
         }
         
         public void ActivateScreen()
         {
             // Get the wrapper
-            Wrapper wrapper;
-            if (defaultMenuIndex <= 0) wrapper = managedMenus[0];
-            else if (defaultMenuIndex >= managedMenus.Count) wrapper = managedMenus[managedMenus.Count - 1];
-            else wrapper = managedMenus[defaultMenuIndex];
+            Wrapper wrapper = managedMenus[Mathf.Clamp(defaultMenuIndex, 0, managedMenus.Count - 1)];
             queue.BeginTask(Tasks.ActivateScreen, this, wrapper);
         }
 
         public void ActivateScreen(int index)
         {
-            Wrapper wrapper;
-            if (index <= 0) wrapper = managedMenus[0];
-            else if (index >= managedMenus.Count) wrapper = managedMenus[managedMenus.Count - 1];
-            else wrapper = managedMenus[index];
+            Wrapper wrapper = managedMenus[Mathf.Clamp(index, 0, managedMenus.Count - 1)];
             queue.BeginTask(Tasks.ActivateScreen, this, wrapper);
         }
         
@@ -92,7 +87,6 @@ namespace MenuManagement.Perception
             if (wrapper != null) queue.BeginTask(Tasks.ActivateScreen, this, wrapper);
         }
 
-        
         public void DeactivateScreen()
         {
             queue.BeginTask(Tasks.DeactivateScreen, this);
@@ -140,9 +134,7 @@ namespace MenuManagement.Perception
                 // user trying to disable active menu
                 if (m.ActiveMenuWrapper != null && wrapper.menu == m.ActiveMenuWrapper.menu)
                 {
-                    m._ignoreToggleCallbacks = true;
-                    wrapper.toggle.isOn = true;
-                    m._ignoreToggleCallbacks = false;
+                    wrapper.toggle.SetIsOnWithoutNotify(true);
                     m.queue.TaskDone();
                     return;
                 }
@@ -152,9 +144,7 @@ namespace MenuManagement.Perception
                 {
                     if (m.ActiveMenuWrapper != null)
                     {
-                        m._ignoreToggleCallbacks = true;
-                        m.ActiveMenuWrapper.toggle.isOn = false;
-                        m._ignoreToggleCallbacks = false;
+                        m.ActiveMenuWrapper.toggle.SetIsOnWithoutNotify(false);
                     }
 
                     LoadMenu(m, wrapper); // calls m.TaskDone()

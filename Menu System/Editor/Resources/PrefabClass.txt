@@ -22,18 +22,32 @@ public class CST_PREFAB_CLASS : BaseItemPrefab<CST_DATA_CLASS>
     {
 /*CST_CODE_SETUP*/
     }
-    
 #if cst_prefab_set_binding
+    
     public override void SetBindings()
     {
-
+        base.SetBindings();
     }
 #endif
-
 #if cst_prefab_on_select
+
     public override void OnSelect()
     {
+        base.OnSelect();
+    }
+#endif 
+#if cst_prefab_on_deselect
 
+    public override void OnDeselect()
+    {
+        base.OnDeselect();
+    }
+#endif 
+#if cst_prefab_on_confirm
+
+    public override void OnConfirm()
+    {
+        base.OnConfirm();
     }
 #endif 
 }

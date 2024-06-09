@@ -14,10 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _compileVariables:
   - name: prefab_set_binding
-    displayName: Override SetBindings in ItemPrefab.
+    displayName: Item.SetBindings
     tooltip: Override SetBindings callback in ItemPrefab class.
     defaultValue: 0
   - name: prefab_on_select
-    displayName: Override OnSelect in ItemPrefab.
+    displayName: Item.OnSelect
     tooltip: Override OnSelect callback in ItemPrefab class.
+    defaultValue: 0
+  - name: prefab_on_deselect
+    displayName: Item.OnDeselect
+    tooltip: Override OnDeselect callback in ItemPrefab class.
+    defaultValue: 0
+  - name: prefab_on_confirm
+    displayName: Item.OnConfirm
+    tooltip: Override OnConfirm callback in ItemPrefab class.
+    defaultValue: 0
+  - name: override_loading_failed
+    displayName: Menu.LoadingFailed
+    tooltip: Override LoadingFailed Callback in Menu Class.
+    defaultValue: 0
+  - name: override_menu_item_selected
+    displayName: Menu.OnItemSelected
+    tooltip: Override OnItemSelected Callback in Menu Class.
+    defaultValue: 0
+  - name: override_menu_item_deselected
+    displayName: Menu.OnItemDeselected
+    tooltip: Override OnItemDeselected Callback in Menu Class.
+    defaultValue: 0
+  - name: override_menu_item_confirmed
+    displayName: Menu.OnItemConfirmed
+    tooltip: Override OnItemConfirmed Callback in Menu Class.
+    defaultValue: 0
+  - name: override_menu_item_setup
+    displayName: Menu.SetupItem
+    tooltip: Override SetupItem Callback in Menu Class.
     defaultValue: 0

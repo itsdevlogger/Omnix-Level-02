@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using MenuManagement.Perception;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,35 +10,66 @@ namespace MenuManagement.Base
 {
     public class MenuLoader : MonoBehaviour
     {
-        private static MenuLoader instance;
+        public static MenuLoader Instance { get; private set; }
+        private AudioSource[] defaultSources;
+        private Dictionary<BaseMenu, IMenuTransition> cachedTransitions;
 
-        private static MenuLoader Instance
+        #region Init Stuff
+        private static readonly List<MenuScreenManager> _managers = new List<MenuScreenManager>();
+        private static readonly List<BaseMenu> _menus = new List<BaseMenu>();
+        private static bool _hasNoMenus = true;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void CreateInstance()
         {
-            get
+            var go = new GameObject("[Menu Management Center]");
+            Instance = go.AddComponent<MenuLoader>();
+            Instance.cachedTransitions = new Dictionary<BaseMenu, IMenuTransition>();
+            Instance.defaultSources = new AudioSource[]
             {
-                if (instance == null)
-                {
-                    var go = new GameObject("[MenuManagementCenter]");
-                    instance = go.AddComponent<MenuLoader>();
-                    instance.cachedTransitions = new Dictionary<BaseMenu, IMenuTransition>();
-                    instance.defaultSources = new AudioSource[]
-                    {
                         go.AddComponent<AudioSource>(),
                         go.AddComponent<AudioSource>(),
                         go.AddComponent<AudioSource>(),
                         go.AddComponent<AudioSource>(),
                         go.AddComponent<AudioSource>()
-                    };
-                    DontDestroyOnLoad(instance.gameObject);
-                }
-
-                return instance;
-            }
+            };
+            DontDestroyOnLoad(Instance.gameObject);
         }
 
-        private AudioSource[] defaultSources;
-        private Dictionary<BaseMenu, IMenuTransition> cachedTransitions;
+        public static void RegisterMenu(BaseMenu menu)
+        {
+            if (menu is MenuScreenManager manager) _managers.Add(manager);
+            else _menus.Add(menu);
+            _hasNoMenus = false;
+        }
 
+        private void Update()
+        {
+            if (_hasNoMenus) return;
+
+            foreach (var manager in _managers)
+            {
+                if (manager.LoadInAwake) MenuLoader.Load(manager);
+                else MenuLoader.UnloadWithoutTransition(manager);
+            }
+
+            int i = 0;
+            while (i < _menus.Count)
+            {
+                var menu = _menus[i];
+                i++;
+                if (menu == null || menu.IsManaged) continue;
+
+                if (menu.LoadInAwake) MenuLoader.Load(menu);
+                else MenuLoader.UnloadWithoutTransition(menu);
+            }
+            _menus.Clear();
+            _hasNoMenus = true;
+            Instance.enabled = false;   // This wont stop Coroutine, but will stop this callback
+        }
+        #endregion
+
+        #region Loading Stuff
         public static void LoadWithoutTransition([NotNull] BaseMenu menu, Action onComplete = null, Action onFail = null)
         {
             Instance.StartCoroutine(BaseMenu.Load(menu, null, onComplete, onFail));
@@ -143,5 +175,6 @@ namespace MenuManagement.Base
             if (trans != null) Instance.cachedTransitions.Add(menu, trans);
             return trans;
         }
+        #endregion
     }
 }

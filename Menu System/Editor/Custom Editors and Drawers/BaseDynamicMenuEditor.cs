@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace MenuManagement.Editor
 {
-    [CustomEditor(typeof(BaseDynamicMenu<,,>), true)]
+    [CustomEditor(typeof(BaseDynamicMenu<,>), true)]
     [CanEditMultipleObjects]
     public class BaseDynamicMenuEditor : BaseMenuEditor
     {

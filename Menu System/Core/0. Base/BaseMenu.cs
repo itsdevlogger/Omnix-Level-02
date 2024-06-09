@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,6 +50,8 @@ namespace MenuManagement.Base
 
         /// <summary> If you are using Helper Methods or any MenuManager, then no need to update this. </summary>
         public MenuStatus Status { get; private set; } = MenuStatus.Unloaded;
+        public bool IsManaged { get; internal set; } = false;
+        public bool LoadInAwake => loadInAwake;
         #endregion
 
         #region Events
@@ -71,6 +74,24 @@ namespace MenuManagement.Base
         #endregion
 
         #region Virtual
+        public BaseMenu()
+        {
+            if (MenuLoader.Instance != null)
+            {
+                MenuLoader.RegisterMenu(this);
+            }
+        }
+        //{
+        //    if (InitMenus.Instance == null)
+        //    {
+        //        // Means we are in editor mode
+        //        Debug.Log("Its null");
+        //        return;
+        //    }
+        //    InitMenus.Instance.RegisterCallback(Init);
+        //}
+
+
         /// <summary> Will be called only once when the menu is either loaded/unloaded for the first time (Whichever happens first) </summary>
         protected virtual void Initialize() { }
 
@@ -100,11 +121,6 @@ namespace MenuManagement.Base
         #endregion
 
         #region Functions
-        protected virtual void Awake()
-        {
-            if (loadInAwake) MenuLoader.Load(this);
-            else MenuLoader.UnloadWithoutTransition(this);
-        }
 
         private void SetStateOfConnectedGameObjects()
         {

@@ -84,6 +84,7 @@ namespace MenuManagement.Editor
 
         public CompilePair[] GetCompileVariables()
         {
+            if (_compileVariables == null) { return new CompilePair[0]; }
             CompilePair[] variables = new CompilePair[_compileVariables.Length];
             for (int i = 0; i < _compileVariables.Length; i++)
             {

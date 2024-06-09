@@ -15,9 +15,9 @@ namespace MenuManagement.Editor
             SerializedProperty toggleProp = property.FindPropertyRelative("toggle");
 
             position.width = position.width * 0.5f - 5f;
-            EditorGUI.PropertyField(position, menuProp, GUIContent.none);
-            position.x += position.width + 5f;
             EditorGUI.PropertyField(position, toggleProp, GUIContent.none);
+            position.x += position.width + 5f;
+            EditorGUI.PropertyField(position, menuProp, GUIContent.none);
         }
     }
 }

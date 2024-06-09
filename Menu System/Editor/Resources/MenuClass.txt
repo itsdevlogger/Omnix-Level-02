@@ -20,11 +20,45 @@ public class CST_MENU_CLASS : BaseDynamicMenu<CST_DATA_CLASS, CST_PREFAB_CLASS, 
 {
     protected override CST_MENU_CLASS CommonObject => this;
 #endif
-    
+
     protected override IEnumerable<CST_DATA_CLASS> GetItems()
     {
-        
     }
+#if cst_override_loading_failed
+
+    protected override void OnLoadingFailed()
+    {
+        base.OnLoadingFailed();
+    }
+#endif
+#if cst_override_menu_item_selected
+
+    protected override void OnItemSelected(CST_DATA_CLASS data, CST_PREFAB_CLASS item)
+    {
+        base.OnItemSelected(data, item);
+    }
+#endif
+#if cst_override_menu_item_deselected
+
+    protected override void OnItemDeselected(CST_DATA_CLASS data, CST_PREFAB_CLASS item)
+    {
+        base.OnItemDeselected(data, item);
+    }
+#endif
+#if cst_override_menu_item_confirmed
+
+    protected override void OnItemConfirmed(CST_DATA_CLASS data, CST_PREFAB_CLASS item)
+    {
+        base.OnItemConfirmed(data, item);
+    }
+#endif
+#if cst_override_menu_item_setup
+
+    protected override void SetupItem(CST_PREFAB_CLASS instance, CST_DATA_CLASS data)
+    {
+        base.SetupItem(instance, data);
+    }
+#endif
 }
 #if cst_has_name_space
 // @cst_indent -= 4
