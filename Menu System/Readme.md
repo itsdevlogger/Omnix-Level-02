@@ -191,4 +191,4 @@ these attributes to any class that inherits from the `BaseMenu` class to specify
 - `GroupEvents`: Add properties to the "Events" group, which are shown as events that can be toggled on or off.
 - `GroupRuntimeConstant`: Add properties to the "Runtime Constants" group, which shouldn't be edited during Play Mode.
 - `GroupReadOnly`: Add properties to the "Read Only" group, which shouldn't be edited at all.
-- `GroupProperties`: Add properties to an existing group or create a new
+- `GroupProperties`: Add properties to an existing group or create a new one
